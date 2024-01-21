@@ -48,9 +48,30 @@ function playRound(playerSelection, computerSelection){
     }
     else{
         console.log("It's a tie")
-        return playRound(getComputerChoice(),getUserChoice())
+        return playRound(getUserChoice(),getComputerChoice())
     }
 
 }
 
-console.log(playRound(getComputerChoice(),getUserChoice()))
+function game(){
+    let playerWins = 0
+    let computerWins = 0
+    while(playerWins<3 && computerWins<3){
+        let result = playRound(getUserChoice(),getComputerChoice())
+        console.log(result)
+        if(result.substring(0,7)=="You Win"){
+            playerWins++
+        }
+        else{
+            computerWins++
+        }
+    }
+    if(playerWins==3){
+        console.log("You won the game")
+    }
+    else{
+        console.log("You lost the game")
+    }
+}
+
+game()
