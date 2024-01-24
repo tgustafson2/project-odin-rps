@@ -15,63 +15,46 @@ function getComputerChoice(){
     }
 }
 
-function getUserChoice(){
-    let choice = prompt("Please enter Rock, Paper or Scissors")
 
-    if(choice.toLowerCase(choice)!='rock' && choice.toLowerCase(choice)!='paper' && choice.toLowerCase(choice)!='scissors'){
-        console.log("Invalid selection")
-        return getUserChoice()
-    }
-    return choice
-}
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase()
-    computerSelection = computerSelection.toLowerCase()
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
     if(playerSelection == "rock" && computerSelection == "scissors"){
-        return "You win! Rock beats Scissors"
+        return "You win! Rock beats Scissors";
     }
     else if(playerSelection == "rock" && computerSelection == "paper"){
-        return "You lose! Paper beats Rock"
+        return "You lose! Paper beats Rock";
     }
     else if(playerSelection == "scissors" && computerSelection == "rock"){
-        return "You lose! Rock beats Scissors"
+        return "You lose! Rock beats Scissors";
     }
     else if(playerSelection == "scissors" && computerSelection == "paper"){
-        return "You win! Scissors beats Paper"
+        return "You win! Scissors beats Paper";
     }
     else if(playerSelection == "paper" && computerSelection == "rock"){
-        return "You Win! Paper beats Rock"
+        return "You Win! Paper beats Rock";
     }
     else if(playerSelection == "paper" && computerSelection == "scissors"){
-        return "You lose! Scissors beats Paper"
+        return "You lose! Scissors beats Paper";
     }
     else{
-        console.log("It's a tie")
-        return playRound(getUserChoice(),getComputerChoice())
+        return "It's a tie";
     }
 
 }
 
-function game(){
-    let playerWins = 0
-    let computerWins = 0
-    while(playerWins<3 && computerWins<3){
-        let result = playRound(getUserChoice(),getComputerChoice())
-        console.log(result)
-        if(result.substring(0,7)=="You Win"){
-            playerWins++
-        }
-        else{
-            computerWins++
-        }
-    }
-    if(playerWins==3){
-        console.log("You won the game")
-    }
-    else{
-        console.log("You lost the game")
-    }
-}
+// const rockBtn = document.querySelector("#rock");
+// const paperBtn = document.querySelector("#paper");
+// const scissorsBtn = document.querySelector("#scissors");
+const buttons = document.querySelectorAll(".play-buttons button");
 
-game()
+buttons.forEach((button) =>{
+    button.addEventListener("click", () => {
+        console.log(playRound(button.textContent, getComputerChoice()));
+    });
+});
+
+
+
+
